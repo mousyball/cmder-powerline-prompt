@@ -3,7 +3,7 @@
 --- promptValue is whether the displayed prompt is the full path or only the folder name
  -- Use:
  -- "full" for full path like C:\Windows\System32
-local promptValueFull = "full"
+local promptValueFull = "folder"
  -- "folder" for folder name only like System32
 local promptValueFolder = "folder"
  -- default is promptValueFull
@@ -213,7 +213,39 @@ function colorful_git_prompt_filter()
     return false
 end
 
+function get_virtual_env(env_var)
+    env_path = clink.get_env(env_var)
+    if env_path then
+        return env_path
+    end
+    return false
+end
+
+---
+ -- add conda env name 
+---
+function conda_prompt_filter()
+    -- add in python virtual env name
+    local python_env = get_virtual_env('CONDA_DEFAULT_ENV')
+    if python_env then
+        clink.prompt.value = string.gsub(clink.prompt.value, "λ", "["..python_env.."] λ")
+    end
+end
+
+---
+ -- add virtual env name 
+---
+function venv_prompt_filter()
+    -- add in virtual env name
+    local venv = get_virtual_env('VIRTUAL_ENV')
+    if venv then
+        clink.prompt.value = string.gsub(clink.prompt.value, "λ", "["..venv.."] λ")
+    end
+end
+
 -- override the built-in filters
 clink.prompt.register_filter(lambda_prompt_filter, 55)
+clink.prompt.register_filter(conda_prompt_filter, 58)
+clink.prompt.register_filter(venv_prompt_filter, 58)
 clink.prompt.register_filter(colorful_hg_prompt_filter, 60)
 clink.prompt.register_filter(colorful_git_prompt_filter, 60)
