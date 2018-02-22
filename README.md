@@ -1,12 +1,12 @@
-# Cmder-powerline-prompt
+# Cmder-powerline-env-prompt
 
-This is a custom prompt for [Cmder](http://cmder.net/) (the alternative console emulator for Windows). There's also a [PowerShell version](https://github.com/AmrEldib/cmder-powershell-powerline-prompt) of this prompt.  
-It looks like this:  
-![screenshot](screenshot.png)
+This is a custom prompt for [Cmder](http://cmder.net/) (the alternative console emulator for Windows) with support for conda environments. This repo also a modified version from [cmder-powerline-venv-prompt](https://github.com/Tset-Noitamotua/cmder-powerline-venv-prompt). And it works well in VSCode.
 
-It has a blue background for the prompt.  
-For folders with git repos, you get yellow background for changes, and green for clean repos.  
-I'm using Consolas font.
+Firstly, activate your conda environment in VSCode integrated terminal.  
+![fig](fig01.jpg)
+
+Then, it looks like this:  
+![fig](fig02.jpg)
 
 The look is inspired by [Powerline for Vim](https://github.com/powerline/powerline), and [Zsh's theme agnoster](https://github.com/agnoster/agnoster-zsh-theme).
 
