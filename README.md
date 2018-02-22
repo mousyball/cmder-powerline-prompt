@@ -1,4 +1,4 @@
-# Cmder-powerline-env-prompt
+# Cmder-powerline-env-prompt for conda
 
 This is a custom prompt for [Cmder](http://cmder.net/) (the alternative console emulator for Windows) with support for conda environments. This repo also a modified version from [cmder-powerline-venv-prompt](https://github.com/Tset-Noitamotua/cmder-powerline-venv-prompt). And it works well in VSCode.
 
