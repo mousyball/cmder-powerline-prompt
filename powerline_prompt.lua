@@ -23,7 +23,9 @@ function lambda_prompt_filter()
 	end
     prompt = "\x1b[37;44m{cwd} {git}{hg}\n\x1b[1;30;40m{lamb} \x1b[0m"
     new_value = string.gsub(prompt, "{cwd}", cwd)
-    clink.prompt.value = string.gsub(new_value, "{lamb}", "λ")
+    --clink.prompt.value = string.gsub(new_value, "{lamb}", "λ")
+    --clink.prompt.value = string.gsub(new_value, "{lamb}", "\xCE\xBB")
+    clink.prompt.value = string.gsub(new_value, "{lamb}", "$")
 end
 
 local arrowSymbol = ""
@@ -280,7 +282,7 @@ function conda_prompt_filter()
     -- add in python virtual env name
     local python_env = get_virtual_env('CONDA_DEFAULT_ENV')
     if python_env then
-        clink.prompt.value = string.gsub(clink.prompt.value, "λ", "["..python_env.."] λ")
+        clink.prompt.value = string.gsub(clink.prompt.value, "$ ", "["..python_env.."] $ ")
     end
 end
 
@@ -291,7 +293,7 @@ function venv_prompt_filter()
     -- add in virtual env name
     local venv = get_virtual_env('VIRTUAL_ENV')
     if venv then
-        clink.prompt.value = string.gsub(clink.prompt.value, "λ", "["..venv.."] λ")
+        clink.prompt.value = string.gsub(clink.prompt.value, "$ ", "["..venv.."] $ ")
     end
 end
 
